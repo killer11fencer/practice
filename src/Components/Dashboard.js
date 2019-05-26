@@ -17,19 +17,26 @@ class Dashboard extends Component {
     handleChange = (e) => {
         this.setState({[e.target.name]: e.target.value})
     }
-    getPosts = async (req,res) => {
+    getPosts = async () => {
         axios.get('/api/post').then(res =>this.setState({posts:res.data}))
     }
-    resetSearch = (req,res) => {
+    resetSearch = () => {
         this.setState({userPost: false})
+    }
+    filterSearch = () => {
+        
+        
     }
     render() {
         return(
             <div>
                 <div>
-                    <input name='search' onChange={this.handleChange}/>
+                    <input name='search' onChange={this.handleChange}/> 
+                    <button onClick={this.filterSearch}>Search</button>
+                    <button onClick={this.resetSearch}>Cancel</button>
                 </div>
             </div>
         )
     }
 }
+export default Dashboard
