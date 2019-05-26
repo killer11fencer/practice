@@ -14,4 +14,4 @@ massive(CONNECTION_STRING).then(dbInstance=>{
 }).catch(err=>console.log('error on server',err))
 
 app.get('/api/posts/:userid',CTRL.getPostById)
-app.post('/api/auth/register',CTRL.addPost)
+app.post('/api/auth/register',CTRL.register)
