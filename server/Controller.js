@@ -1,5 +1,9 @@
 const bcryptjs = require('bcryptjs')
 module.exports = {
+    getPosts: (req,res) => {
+        const db = req.app.get('db')
+        db.getPost().then(result=>res.status(200).send(result))
+    },
     getPostById: (req,res) => {
         const db = req.app.get('db')
         const {id} = req.params

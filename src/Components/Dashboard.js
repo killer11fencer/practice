@@ -12,7 +12,7 @@ class Dashboard extends Component {
         }
     }
     componentDidMount() {
-        
+        this.getPosts()
     }
     handleChange = (e) => {
         this.setState({[e.target.name]: e.target.value})
@@ -24,7 +24,15 @@ class Dashboard extends Component {
         this.setState({userPost: false})
     }
     filterSearch = () => {
-        
+        let filteredArray = this.state.posts.filter(elem=>{
+            return elem.title === this.state.search
+        })
+        let displayFilter = filteredArray.map((elem,i)=>{
+            return <div key={i}><h1>{elem.title}</h1>
+            <div>{elem.img}</div>
+            <div>{elem.username}</div>
+            </div> 
+        })
         
     }
     render() {
@@ -34,6 +42,7 @@ class Dashboard extends Component {
                     <input name='search' onChange={this.handleChange}/> 
                     <button onClick={this.filterSearch}>Search</button>
                     <button onClick={this.resetSearch}>Cancel</button>
+                    <div></div>
                 </div>
             </div>
         )
